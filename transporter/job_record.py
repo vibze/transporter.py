@@ -1,12 +1,27 @@
 from datetime import datetime
-import inspect
 import logging
+import os
 from peewee import *
-from sqlalchemy import Column, Integer, String, DateTime
 from transporter import settings
 
-def logger():
-    logger = logging.getLogger('Transporter Job Logger')
+
+def global_logger(log_file=None):
+    log_file = log_file.replace('{exec_time}', datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+    os.environ["TRANSPORTER_LOGGER"] = '%s' % log_file
+    return logger()
+
+
+def logger(log_file=None):
+    log_file = os.environ.get("TRANSPORTER_LOGGER", log_file)
+
+    if log_file:
+        log_file = log_file.replace('{exec_time}', datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+        logger_name = 'transporter_job_logger(%s)' % log_file
+    else:
+        logger_name = 'transporter_job_logger'
+
+    logger = logging.getLogger(logger_name)
+
     if len(logger.handlers) != 0:
         return logger
 
@@ -15,8 +30,9 @@ def logger():
     sh.setFormatter(formatter)
     logger.addHandler(sh)
 
-    if settings.LOG_FILE:
-        fh = logging.FileHandler(settings.LOG_FILE)
+    if log_file:
+        log_file_path = os.path.join(settings.LOG_ROOT, log_file)
+        fh = logging.FileHandler(log_file_path)
         fh.setFormatter(formatter)
         logger.addHandler(fh)
 

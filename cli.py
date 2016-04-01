@@ -4,9 +4,12 @@ import sys
 
 import os
 import click
+from inflection import camelize
+from transporter import log
 
 
 SETTINGS_ENV_VARIABLE = "TRANSPORTER_SETTINGS_MODULE"
+JOB_ENV_VARIABLE = "TRANSPORTER_JOB_NAME"
 
 
 @click.group()
@@ -15,10 +18,11 @@ def cli():
 
 
 @cli.command()
+@click.option('--settings', default='config')
 @click.argument('name', nargs=1)
-def new(name):
-    package_path = os.path.dirname(os.path.realpath(__file__))
-    template_path = os.path.join(package_path, 'new_project_template')
+def new(settings, name):
+    from cli_tasks import get_template_path
+    template_path = get_template_path('new_project_template')
     working_path = os.path.join(os.getcwd(), name)
 
     try:
@@ -30,19 +34,51 @@ def new(name):
 
 @cli.command()
 @click.option('--settings', default='config')
-@click.argument('job', required=True)
-@click.argument('params', nargs=-1)
-def run(settings, params, job):
+@click.argument('task', nargs=1, default='job')
+def create(settings, task):
     os.environ[SETTINGS_ENV_VARIABLE] = settings
 
-    job = importlib.import_module(job)
-    kwargs = dict(param.split('=') for param in params)
+    from cli_tasks.create_datastore import create_datastore
+    from cli_tasks.create_job import create_job
 
-    job.run(**kwargs)
+    if task == 'datastore':
+        create_datastore()
+
+    if task == 'job':
+        create_job()
 
 
 @cli.command()
-@click.option('--settings', default='settings')
+@click.option('--settings', default='config')
+@click.argument('job_name', required=True)
+@click.argument('params', nargs=-1)
+def run(settings, params, job_name):
+    os.environ[SETTINGS_ENV_VARIABLE] = settings
+    os.environ[JOB_ENV_VARIABLE] = job_name
+
+    job = importlib.import_module(job_name)
+    kwargs = dict(param.split('=') for param in params)
+
+    try:
+        from transporter import settings as s
+        from transporter import log
+        if s.YELL_JOBS_RUN:
+            log.info('Running job %s' % job)
+        if hasattr(job, 'run'):
+            job.run(**kwargs)
+        else:
+            job_class_name = camelize(job.__name__.split('.')[-1])  # Try to find camelized module title class
+            if hasattr(job, job_class_name):
+                job_class = getattr(job, job_class_name)
+                job_class().run(**kwargs)
+
+
+    except Exception as e:
+        log.exception(e)
+
+
+@cli.command()
+@click.option('--settings', default='config')
 @click.argument('host', nargs=1, default='0.0.0.0:5000')
 def monitor(settings, host):
     from transporter.web import app

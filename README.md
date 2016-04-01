@@ -9,10 +9,10 @@ This will create a loader directory with the following structure:
 ```
 loader/
     datastores/  <- You configure your datastores here
-    helpers/  <- Put your helpers and utility functions here
-    jobs/  <- This is where you jobs should sit
-    logs/  <- By default logs are gonna be stored here
-    config.py  <- Project configuration file
+    helpers/     <- Put your helpers and utility functions here
+    jobs/        <- This is where you jobs should sit
+    logs/        <- By default logs are gonna be stored here
+    config.py    <- Project configuration file
 ```
 
 Take a look at configuration file and you are ready to start coding.
@@ -21,66 +21,39 @@ Take a look at configuration file and you are ready to start coding.
 Datastore is a class that extends one of the framework's built in datasource helper classes like MySQL, PostgreSQL, CSV, etc.
 Each type of datastore has it's own configuration properties.
 
-## Running jobs
+## Jobs
+Job is a module. It should either have a run function or a class with the same name as module, but camelized. The class must
+implement a `run` method.
+
+Jobs can be run using transporter cli with params that will be passed to executable function as keyword arguments.
 ```
 transporter run jobs.sample_job period=20150501
 ```
-Run command runs a given job with parameters.
 
-## Scheduling jobs
-```
-transporter schedule add jobs.sample_job
+## Logger
+When a job is run using transporter cli you can send messages to internal logger and log will be stored in `logs` directory
+in project folder under the jobs name.
 
-Please enter first run date and time for this job using '2015-05-03.14:26' format
-> 2015-03-04.23:00
-How often do you want to run it? Enter one of: monthly / weekly / daily / hourly
-> weekly
-Job 'jobs.sample_job' has been scheduled to run weekly starting from 04.03.2015 at 23:00
-```
+Example;
+```python
+# file is load_data.py
+from transporter import log
 
-## Show current schedule
-```
-transporter schedule
-
-1) jobs.sample_job | weekly | last 04.03.2015 at 23:00 | next 11.03.2015 at 23:00
+def run():
+    log.info('Running load_data log without any parameters')
 ```
 
-## Remove job from schedule
 ```
-transporter schedule remove 1
-Please confirm that you want to remove jobs.sample_job from a weekly schedule [y/n]
-> y
-Job 'jobs.sample_job' has been removed from weekly schedule. Last run was 04.03.2015 23:00.
+tranporter run jobs.load_data
 ```
-
-## Monitoring
-```
-transporter monitor start
-Transporter monitor operational! You can access it at 0.0.0.0:8200.
-```
-
-## Job
-Job is basically a module with a run function. Transporter framework provides a number of decorators
-that you can use to buff that execute function. Decorators can be applied to any function that can also
-be some subjob function like cleaning up the target table or do any necessary preparations. These will be logged
-like separate jobs, but transporters cli and scheduler will always look for a run command.
-
-@transporter.catch_errors
-This will catch any errors that are raised in the process of executing a job so that execution of your
-badge job won't stop if one of them decides to bail out.
-
-@transporter.monitor
-This will log execution start, end and exec result in a monitor database so you can see it on the monitor web interface.
+Log will be stored in `logs/load_data_<timestamp>.log` file.
 
 ## Plugins
-Transporter has plugins for various data sources:
+Transporter has plugins for various data sources or connections:
 - CSV
-- XML
-- XLS/XLSX
 - Oracle
 - MySQL
-- PostgreSQL
-- MS SQL
+- SSH
 
 Every plugin has an `extract` method that returns a `Cargo` instance. Cargo is a list extending class that provides some
 additional functionality.
