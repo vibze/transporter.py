@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="manager.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/transporter/classes/manager.py">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5794702">
-              <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.049668875">
+              <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -67,6 +67,7 @@
         <option value="$PROJECT_DIR$/transporter/server/templates/show_job.html" />
         <option value="$PROJECT_DIR$/transporter/server/__init__.py" />
         <option value="$PROJECT_DIR$/transporter/classes/manager.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -839,14 +840,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03311258">
-          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/transporter/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.54635763">
@@ -1008,8 +1001,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/transporter/classes/manager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5794702">
-          <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.7450331">
+          <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
+          <folding>
+            <marker date="1460050700000" expanded="false" signature="-1:-1" placeholder="import ..." />
+            <marker date="1460050700000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1460050700000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1460050700000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1460050700000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1460050700000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1460050700000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1460050700000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1460050700000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1460050700000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1460050700000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.049668875">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
           <folding />
         </state>
       </provider>

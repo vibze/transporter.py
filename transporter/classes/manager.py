@@ -11,7 +11,7 @@ class JobFile(object):
         self.path = os.path.join(settings.JOBS_ROOT, project_path)
         self.project_path = project_path
 
-        self.ref = 'jobs.' + project_path.replace('/', '.')[:-3]
+        self.ref = 'jobs.' + project_path.replace(os.sep, '.')[:-3]
         self.module = self.import_module()
         self.doc = self.module.__doc__
 
@@ -38,7 +38,7 @@ class LogFile(object):
         self.path = os.path.join(settings.LOGS_ROOT, project_path)
         self.project_path = project_path
 
-        data_string = self.path.split('/')[-1][:-4]  # Get just the log file name without extension
+        data_string = self.path.split(os.sep)[-1][:-4]  # Get just the log file name without extension
         self.job_ref = data_string.split('_')[0]
         self.time = datetime.strptime(data_string.split('_')[1], '%Y-%m-%d-%H-%M-%S')
 
