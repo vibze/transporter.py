@@ -25,8 +25,7 @@ class JobFile(object):
 
     def import_module(self):
         import_id = self.ref.replace('.', '_')
-        imp.load_source(import_id, self.path)
-        return importlib.import_module(import_id)
+        return imp.load_source(import_id, self.path)
 
     @property
     def contents(self):

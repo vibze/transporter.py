@@ -25,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/transporter/server/__init__.py">
+      <file leaf-file-name="manager.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/transporter/classes/manager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.28145695">
-              <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.5794702">
+              <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -65,8 +65,8 @@
         <option value="$PROJECT_DIR$/transporter/server/templates/show_log.html" />
         <option value="$PROJECT_DIR$/transporter/server/templates/index.html" />
         <option value="$PROJECT_DIR$/transporter/server/templates/show_job.html" />
-        <option value="$PROJECT_DIR$/transporter/classes/manager.py" />
         <option value="$PROJECT_DIR$/transporter/server/__init__.py" />
+        <option value="$PROJECT_DIR$/transporter/classes/manager.py" />
       </list>
     </option>
   </component>
@@ -501,7 +501,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="113" y="23" width="1346" height="1417" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29217792" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -511,7 +511,7 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3017706" sideWeight="0.64800614" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3017706" sideWeight="0.64800614" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -985,26 +985,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/transporter/classes/manager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5629139">
-          <caret line="39" column="10" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
-          <folding>
-            <marker date="1460049544000" expanded="false" signature="-1:-1" placeholder="import ..." />
-            <marker date="1460049544000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1460049544000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1460049544000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1460049544000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1460049544000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1460049544000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1460049544000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1460049544000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1460049544000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1460049544000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/transporter/interfaces/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1017,6 +997,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.28145695">
           <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
+          <folding>
+            <marker date="1460049652000" expanded="false" signature="-1:-1" placeholder="import ..." />
+            <marker date="1460049652000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1460049652000" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1460049652000" expanded="true" signature="-1:-1" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/transporter/classes/manager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5794702">
+          <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
           <folding />
         </state>
       </provider>
