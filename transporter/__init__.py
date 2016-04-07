@@ -20,6 +20,8 @@ class Settings(object):
     def configure(self):
         self.SETTINGS_MODULE = os.environ.get("TRANSPORTER_SETTINGS_MODULE")
         self.PROJECT_ROOT = os.getcwd()
+        self.JOBS_ROOT = os.path.join(self.PROJECT_ROOT, 'jobs')
+        self.LOGS_ROOT = os.path.join(self.PROJECT_ROOT, 'logs')
         self.LOG_FILE = None
         self.LOGGER = None
 
@@ -70,7 +72,7 @@ class Logger(object):
         if log_file is None:
             raise "Transporter job not set"
 
-        log_file += '_%s.log' % datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        log_file += '_%s.log' % datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
         logger = logging.getLogger('transporter_job_logger')
 
         if len(logger.handlers) == 0:
@@ -89,3 +91,6 @@ class Logger(object):
 
 settings = Settings()
 log = Logger()
+
+from transporter.classes.manager import Manager
+manager = Manager()

@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="/public/styles.css" />
 </head>
 <body>
-    <h1>Transporter monitor</h1>
+    <a href="/">Home</a>
+    <h1>Log: {{ log.job_ref }} - {{ log.time }}</h1>
 
+    <pre>{{ log.contents }}</pre>
 </body>
 </html>

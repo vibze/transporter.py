@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="/public/styles.css" />
+</head>
+<body>
+    <h1>Transporter monitor</h1>
+
+    <h2>Jobs</h2>
+    <table>
+    {% for job in jobs %}
+        <tr>
+            <td>
+                <a href="/jobs/{{ job.project_path }}">{{ job.ref }}</a>
+            </td>
+            <td>{{ job.path }}</td>
+            <td>{{ job.doc }}</td>
+            <td>{{ job.type}}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <h2>Logs</h2>
+    <table>
+    {% for log in logs %}
+        <tr>
+            <td>
+                <a href="/logs/{{ log.project_path }}">{{ log.job_ref }}</a>
+            </td>
+            <td>{{ log.time }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+</body>
+</html>

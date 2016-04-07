@@ -1,6 +1,7 @@
+import pkgutil
 import os
 from time import time
-from transporter import settings
+import types
 
 
 class Timer:
@@ -27,7 +28,9 @@ class Timer:
 
 
 def open_file(path, mode='r'):
+    from transporter import settings
     return open(os.path.join(settings.PROJECT_ROOT, path), mode)
 
 def file_url(path):
+    from transporter import settings
     return 'file:///' + os.path.join(settings.PROJECT_ROOT, path)

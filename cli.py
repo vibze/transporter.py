@@ -20,7 +20,7 @@ def cli():
 @cli.command()
 @click.option('--settings', default='config')
 @click.argument('name', nargs=1)
-def new(settings, name):
+def create_project(settings, name):
     from cli_tasks import get_template_path
     template_path = get_template_path('new_project_template')
     working_path = os.path.join(os.getcwd(), name)
@@ -35,7 +35,8 @@ def new(settings, name):
 @cli.command()
 @click.option('--settings', default='config')
 @click.argument('task', nargs=1, default='job')
-def create(settings, task):
+def new(settings, task):
+    """ New job/datastore, you will be prompted. """
     os.environ[SETTINGS_ENV_VARIABLE] = settings
 
     from cli_tasks.create_datastore import create_datastore
@@ -53,6 +54,7 @@ def create(settings, task):
 @click.argument('job_name', required=True)
 @click.argument('params', nargs=-1)
 def run(settings, params, job_name):
+    """ Run a job (example: run jobs.do_this) """
     os.environ[SETTINGS_ENV_VARIABLE] = settings
     os.environ[JOB_ENV_VARIABLE] = job_name
 
@@ -72,7 +74,6 @@ def run(settings, params, job_name):
                 job_class = getattr(job, job_class_name)
                 job_class().run(**kwargs)
 
-
     except Exception as e:
         log.exception(e)
 
@@ -80,11 +81,13 @@ def run(settings, params, job_name):
 @cli.command()
 @click.option('--settings', default='config')
 @click.argument('host', nargs=1, default='0.0.0.0:5000')
-def monitor(settings, host):
-    from transporter.web import app
+def server(settings, host):
+    """ Run transporter server """
+    from transporter.server import app
 
     os.environ[SETTINGS_ENV_VARIABLE] = settings
     click.echo(" * Transporter monitor starting...")
 
     ip, port = host.split(':')
+    app.debug = True
     app.run(ip, port=int(port))
