@@ -1,6 +1,8 @@
+Disclaimer: this project is not complete. I have documented most of the working stuff, but don't have enough time to keep working on it. Hopefuly will get back to it soon.
+
 # Transporter
 
-Yes! It's an ETL python framework!
+ETL python framework.
 You can kick off a new ETL project like this
 ```python
 transporter new loader 
